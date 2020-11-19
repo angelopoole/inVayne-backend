@@ -12,13 +12,15 @@ class AuthController < ApplicationController
     end
 
     def persist
+        
         if request.headers['Authorization'] 
             ## 'bearer idfhdskfhkjdshfjkdsfhdsjkfhenwfjwdhnfuwe'
             token = request.headers['Authorization'].split(' ')[1]
             # [{user_id: 1}, {algorithm: 'H256'}]
             user_id = JWT.decode(token, secret, true, {algorithm: 'HS256'})[0]['user_id']
             user = User.find(user_id)
-            render json: user
+            # byebug
+            render json: {user: user}
         end
     end
 

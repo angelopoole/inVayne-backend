@@ -9,8 +9,9 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        user = User.find(params[:id])
-        user.destroy_all
+        user = User.find_by(id: params[:user_id])
+        # byebug
+        user.destroy
         render json: { success: "Woohoooo"}
     end
 

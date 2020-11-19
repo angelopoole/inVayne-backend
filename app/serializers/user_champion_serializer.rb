@@ -1,5 +1,4 @@
 class UserChampionSerializer < ActiveModel::Serializer
-  attributes :id
-  has_one :user
-  has_one :champion
+  attributes :id, :user_id, :champion_id
+  belongs_to :champion
 end
